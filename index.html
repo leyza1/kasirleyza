@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Kasir UMKM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                <i class="fas fa-cash-register"></i>
+                Kasir UMKM
+            </a>
+            
+            <button class="navbar-mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-menu" id="navbarMenu">
+                <li class="navbar-item">
+                    <a href="#dashboard" class="navbar-link active" data-section="dashboard">
+                        <i class="fas fa-chart-line"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#kasir" class="navbar-link" data-section="kasir">
+                        <i class="fas fa-shopping-cart"></i>
+                        Kasir
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#stok" class="navbar-link" data-section="stok">
+                        <i class="fas fa-boxes"></i>
+                        Manajemen Stok
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#pelanggan" class="navbar-link" data-section="pelanggan">
+                        <i class="fas fa-users"></i>
+                        Pelanggan
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <div class="section-header">
+                <h1><i class="fas fa-chart-line"></i> Dashboard</h1>
+                <p>Ringkasan aktivitas dan statistik penjualan</p>
+            </div>
+            <div class="dashboard-stats">
+                <!-- Stats akan diisi oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- Kasir Section - TEMPATKAN KODE KASIR LAMA DI SINI -->
+        <section id="kasir" class="content-section">
+            <div class="section-header">
+                <h1><i class="fas fa-shopping-cart"></i> Kasir</h1>
+                <p>Transaksi penjualan cepat dan mudah</p>
+            </div>
+            
+            <!-- ⬇️⬇️⬇️ TEMPATKAN SELURUH KODE KASIR YANG SUDAH ADA DI SINI ⬇️⬇️⬇️ -->
+            <div class="kasir-container">
+                <div class="kasir-layout">
+                    <!-- Panel Produk -->
+                    <div class="produk-panel">
+                        <div class="search-bar">
+                            <input type="text" id="searchProduk" placeholder="Cari produk...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="produk-list" id="produkList">
+                            <!-- Produk akan dimuat di sini -->
+                        </div>
+                    </div>
+
+                    <!-- Panel Keranjang -->
+                    <div class="keranjang-panel">
+                        <div class="keranjang-header">
+                            <h3><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h3>
+                            <div class="pelanggan-selector">
+                                <select id="pelangganSelect">
+                                    <option value="">Pelanggan Umum</option>
+                                </select>
+                                <button id="tambahPelangganBtn" class="btn-secondary">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="keranjang-items" id="keranjangItems">
+                            <!-- Items keranjang akan dimuat di sini -->
+                        </div>
+                        
+                        <div class="keranjang-footer">
+                            <div class="total-section">
+                                <strong>Total: </strong>
+                                <span id="totalHarga">0</span>
+                            </div>
+                            <div class="action-buttons">
+                                <button id="resetBtn" class="btn-secondary">
+                                    <i class="fas fa-trash"></i> Reset
+                                </button>
+                                <button id="checkoutBtn" class="btn-primary">
+                                    <i class="fas fa-credit-card"></i> Checkout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ⬆️⬆️⬆️ AKHIR DARI KODE KASIR YANG SUDAH ADA ⬆️⬆️⬆️ -->
+            
+        </section>
+
+        <!-- Manajemen Stok Section -->
+        <section id="stok" class="content-section">
+            <div class="section-header">
+                <h1><i class="fas fa-boxes"></i> Manajemen Stok</h1>
+                <p>Kelola produk dan persediaan barang</p>
+            </div>
+            <div class="stok-management">
+                <!-- Konten stok akan diisi oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- Pelanggan Section -->
+        <section id="pelanggan" class="content-section">
+            <div class="section-header">
+                <h1><i class="fas fa-users"></i> Manajemen Pelanggan</h1>
+                <p>Kelola data pelanggan</p>
+            </div>
+            <div class="pelanggan-management">
+                <!-- Konten pelanggan akan diisi oleh JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== MODALS ==================== -->
+    <!-- Modal Tambah Pelanggan -->
+    <div id="pelangganModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus"></i> Tambah Pelanggan Baru</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="pelangganForm">
+                <div class="form-group">
+                    <label for="namaPelanggan">Nama Pelanggan *</label>
+                    <input type="text" id="namaPelanggan" required>
+                </div>
+                <div class="form-group">
+                    <label for="nomorTelepon">Nomor Telepon</label>
+                    <input type="tel" id="nomorTelepon">
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <textarea id="alamat" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('pelangganModal').style.display='none'">Batal</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Simpan Pelanggan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Produk -->
+    <div id="produkModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-box"></i> Tambah Produk Baru</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="produkForm">
+                <div class="form-group">
+                    <label for="namaProduk">Nama Produk *</label>
+                    <input type="text" id="namaProduk" required>
+                </div>
+                <div class="form-group">
+                    <label for="hargaProduk">Harga *</label>
+                    <input type="number" id="hargaProduk" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="stokProduk">Stok Awal</label>
+                    <input type="number" id="stokProduk" min="0" value="0">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('produkModal').style.display='none'">Batal</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Simpan Produk
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal Edit Produk -->
+<div id="editProdukModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-edit"></i> Edit Produk</h2>
+            <span class="close">&times;</span>
+        </div>
+        <form id="editProdukForm">
+            <input type="hidden" id="editProdukID">
+            <div class="form-group">
+                <label for="editNamaProduk">Nama Produk *</label>
+                <input type="text" id="editNamaProduk" required>
+            </div>
+            <div class="form-group">
+                <label for="editHargaProduk">Harga *</label>
+                <input type="number" id="editHargaProduk" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="editStokProduk">Stok</label>
+                <input type="number" id="editStokProduk" min="0" value="0">
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" onclick="document.getElementById('editProdukModal').style.display='none'">Batal</button>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-save"></i> Update Produk
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Konfirmasi Hapus -->
+<div id="deleteProdukModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-trash"></i> Hapus Produk</h2>
+            <span class="close">&times;</span>
+        </div>
+        <div style="padding: 20px;">
+            <p>Apakah Anda yakin ingin menghapus produk <strong id="deleteProdukName"></strong>?</p>
+            <p style="color: #e74c3c; font-size: 0.9rem; margin-top: 10px;">
+                <i class="fas fa-exclamation-triangle"></i> Tindakan ini tidak dapat dibatalkan!
+            </p>
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" onclick="document.getElementById('deleteProdukModal').style.display='none'">Batal</button>
+                <button type="button" class="btn-primary" style="background: #e74c3c;" id="confirmDeleteBtn">
+                    <i class="fas fa-trash"></i> Ya, Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Struk Belanja -->
+<div id="strukContainer" class="struk-container">
+    <div class="struk-content" id="strukContent">
+        <!-- Struk content akan diisi oleh JavaScript -->
+    </div>
+    <div class="struk-actions">
+        <button onclick="app.cetakStruk()" class="btn-primary">
+            <i class="fas fa-print"></i> Cetak
+        </button>
+        <button onclick="app.tutupStruk()" class="btn-secondary">
+            <i class="fas fa-times"></i> Tutup
+        </button>
+    </div>
+</div>
+
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navbar.js"></script>
+    
+</body>
+</html>
